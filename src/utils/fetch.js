@@ -31,7 +31,6 @@ service.interceptors.request.use( config => {
         }
 
         data = {
-            method:config.data['method'] || '',
             biz_content:JSON.stringify(biz_content)
         }
         if(getToken()){

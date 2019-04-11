@@ -60,7 +60,7 @@
     import moment from 'moment';
     const sha1 = require('js-sha1');
     const md5 = require('js-md5');
-
+    import * as dict from '@/utils/dictionaries'
     export default {
         data() {
             let validatePwd = (rule, value, callback) => {
@@ -77,6 +77,7 @@
                     pwd: "admin",
                     checked: true
                 },
+                customerGender:"",
                 rules: {
                     op_code: [
                         { required: true, message: "请输入登录名", trigger: "blur" }
@@ -91,6 +92,11 @@
                 isShowPwd: false, // 是否显示密码
                 loading: false, // 登录loading
             };
+        },
+        computed: {
+            gender: function () {
+                return dict.getCustomerGender(this.customerGender);
+            },
         },
         methods: {
             ...mapActions([
@@ -113,7 +119,6 @@
                             userName:this.ruleForm.op_code,
                             pw:this.ruleForm.op_pwd,
                         }
-                        console.log(params)
                         this.Login(params).then(res => {
 
                             this.$router.push({ name: 'Dashboard'});

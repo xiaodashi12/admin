@@ -2,7 +2,7 @@
     <div class="login-container">
         <div class="login-header"></div>
         <div class="card-box">
-            <h1>浙江省ETC发行管理系统</h1>
+            <h1>网易云音乐管理系统</h1>
             <el-form class="login-form" autoComplete="on" :model="ruleForm" :rules="rules" ref="ruleForm"
                      label-position="left">
                 <el-form-item prop="op_code" class="item">
@@ -48,7 +48,10 @@
             </el-form>
         </div>
         <div class="login-footer">
-
+            <div>
+                <i class="v-icon-testwangyiyun"></i>
+                <label>本项目由网易云提供支持</label>
+            </div>
         </div>
     </div>
 </template>
@@ -265,7 +268,7 @@
             right: 0;
             bottom: 0;
             height: 32px;
-            background: url('../assets/login-ft.png') no-repeat center;
+            /*background: url('../assets/login-ft.png') no-repeat center;*/
         }
     }
 </style>

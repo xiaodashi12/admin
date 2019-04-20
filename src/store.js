@@ -6,7 +6,8 @@ import api from '@/api'
 import storage from '@/utils/storage.js'
 import axios from 'axios'
 Vue.use(Vuex)
-Vue.use(axios)
+// Vue.use(axios)
+Vue.prototype.$http = axios
 export default new Vuex.Store({
   state: {
     ticket:getToken(),
@@ -110,7 +111,7 @@ export default new Vuex.Store({
   actions: {
     getInitData() {
         return new Promise((resolve, reject) => {
-            Vue.axios.get('http://oyhfe.com:666/music-data')
+            this.$http.get('http://oyhfe.com:666/music-data')
                 .then(res => {
                     resolve(res.data.musicData)
                 })
@@ -118,7 +119,7 @@ export default new Vuex.Store({
     },
     getInitCommend() {
         return new Promise((resolve, reject) => {
-            Vue.axios.get('http://oyhfe.com:666/commend-list')
+            this.$http.get('http://oyhfe.com:666/commend-list')
                 .then(res => {
                     resolve(res.data.commendList)
                 })
@@ -126,7 +127,7 @@ export default new Vuex.Store({
     },
     getInitDay() {
         return new Promise((resolve, reject) => {
-            Vue.axios.get('http://oyhfe.com:666/day')
+            this.$http.get('http://oyhfe.com:666/day')
                 .then(res => {
                     resolve(res.data.day)
                 })

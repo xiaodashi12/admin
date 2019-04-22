@@ -25,37 +25,83 @@
                 </el-col>
                 <el-col :span="8" style="">
                     <div class="grid-content">
-                        <div class="login">
-                            <el-menu class="el-menu-demo" mode="horizontal">
-                                <el-submenu index="2" popper-class="loginInfo" >
-                                    <template slot="title">
+                        <el-row>
+                            <el-col :span="6">
+                                <div class="login">
+                                    <el-menu class="el-menu-demo" mode="horizontal">
+                                        <el-submenu index="2" popper-class="loginInfo" >
+                                            <template slot="title">
                                       <span class="avatar">
                                           <img class="b1jpg" src="@/assets/b1.jpg" alt="头像" />
                                           <i class="on bottom b-white"></i>
                                       </span>
-                                        <span @click="login">登录</span>
-                                    </template>
-                                    <el-menu-item-group style="with:140px;">
-                                        <el-menu-item index="1-1">
-                                            <i class="v-icon-fontqq"></i>
-                                            <span @click="handleOnLogOut('qq')">QQ登录</span>
-                                        </el-menu-item>
-                                        <el-menu-item index="1-2">
-                                            <i class="v-icon-fontweixin"></i>
-                                            <span @click="handleOnLogOut('weiXin')">微信登录</span>
-                                        </el-menu-item>
-                                        <el-menu-item index="1-3">
-                                            <i class="v-icon-fontshouji"></i>
-                                            <span @click="handleOnLogOut('phone')">手机号登录</span>
-                                        </el-menu-item>
-                                        <el-menu-item index="1-4">
-                                            <i class="v-icon-fontweibo"></i>
-                                            <span @click="handleOnLogOut('weibo')">微博登录</span>
-                                        </el-menu-item>
-                                    </el-menu-item-group>
-                                </el-submenu>
-                            </el-menu>
-                        </div>
+                                                <span @click="login">登录</span>
+                                            </template>
+                                            <el-menu-item-group style="with:140px;">
+                                                <el-menu-item index="1-1">
+                                                    <i class="v-icon-fontqq"></i>
+                                                    <span @click="handleOnLogOut('qq')">QQ登录</span>
+                                                </el-menu-item>
+                                                <el-menu-item index="1-2">
+                                                    <i class="v-icon-fontweixin"></i>
+                                                    <span @click="handleOnLogOut('weiXin')">微信登录</span>
+                                                </el-menu-item>
+                                                <el-menu-item index="1-3">
+                                                    <i class="v-icon-fontshouji"></i>
+                                                    <span @click="handleOnLogOut('phone')">手机号登录</span>
+                                                </el-menu-item>
+                                                <el-menu-item index="1-4">
+                                                    <i class="v-icon-fontweibo"></i>
+                                                    <span @click="handleOnLogOut('weibo')">微博登录</span>
+                                                </el-menu-item>
+                                            </el-menu-item-group>
+                                        </el-submenu>
+                                    </el-menu>
+                                </div>
+                            </el-col>
+                            <el-col :span="3" class="showIi">
+                                <div class="pifu">
+                                    <i class="v-icon-fontpifu owncloth" v-popover:popover2></i>
+                                    <el-popover
+                                            ref="popover2"
+                                            placement="bottom"
+                                            width="400"
+                                            trigger="click" class="theme-option">
+                                        <p class="theme-head">
+                                            主题
+                                        </p>
+                                        <ul class="line-one">
+                                            <li @click="$store.commit('setTheme', 'black')"><span>酷炫黑</span></li>
+                                            <li @click="$store.commit('setTheme', 'red')"><span>官方红</span></li>
+                                            <li @click="$store.commit('setTheme', 'pink')"><span>可爱粉</span></li>
+                                        </ul>
+                                        <ul class="line-two">
+                                            <li @click="$store.commit('setTheme', 'blue')"><span>天际蓝</span></li>
+                                            <li @click="$store.commit('setTheme', 'green')"><span>清新绿</span></li>
+                                            <li @click="$store.commit('setTheme', 'gold')"><span>土豪金</span></li>
+                                        </ul>
+                                    </el-popover>
+                                </div>
+                            </el-col>
+                            <el-col :span="3" class="showIi">
+                                <i class="v-icon-fontyouxiang" ></i>
+                            </el-col>
+                            <el-col :span="3" class="showIi">
+                                <i class="v-icon-fontsuoxiao" ></i>
+                            </el-col>
+                            <el-col :span="3" class="showIi">
+                                <i class="v-icon-fontshezhi" ></i>
+                            </el-col>
+                            <el-col :span="2" class="showIi">
+                                <i class="el-icon-minus" ></i>
+                            </el-col>
+                            <el-col :span="2" class="showIi">
+                                <i class="v-icon-fontzuidahua" ></i>
+                            </el-col>
+                            <el-col :span="2" class="showIi">
+                                <i class="el-icon-close" ></i>
+                            </el-col>
+                        </el-row>
                     </div>
                 </el-col>
             </el-row>
@@ -115,6 +161,7 @@
     }
 </script>
 <style type="text/scss" lang="scss">
+    $netRed: #c62f2f;
     .el-menu--popup{
         min-width: 140px !important;
         padding:0px;
@@ -135,6 +182,103 @@
 
     .el-menu--popup-bottom-start{
         margin-top:0px;
+    }
+    .el-popover{
+        .theme-head {
+            position: relative;
+            padding-bottom: 5px;
+            margin: 10px 10px 2px 15px;
+            line-height: normal;
+            font-size: 1.3rem;
+            border-bottom: 1px solid #ccc;
+            &:after {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                content: '';
+                width: 2.6rem;
+                height: 2px;
+                background-color: #ccc;
+            }
+        }
+        ul {
+            height: 10rem;
+            list-style: none;
+            text-align: center;
+            line-height: 10rem;
+            li {
+                position: relative;
+                display: inline-block;
+                width: 9rem;
+                height: 9rem;
+                vertical-align: middle;
+                cursor: pointer;
+                span {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 2.5rem;
+                    padding-left: 1rem;
+                    font-size: 1.3rem;
+                    color: #fafafa;
+                    line-height: 2.5rem;
+                    text-align: left;
+                    background: rgba(130, 130, 130, .1);
+                }
+            }
+        }
+        .line-one {
+            margin-top: 1rem;
+            li:nth-of-type(1) {
+                background-color: #16181c;
+                &:hover {
+                    box-shadow: 0 0 5px #333;
+                }
+            }
+            li:nth-of-type(2) {
+                background-color: $netRed;
+                margin: {
+                    left: .5rem;
+                    right: .5rem;
+                }
+                &:hover {
+                    box-shadow: 0 0 5px $netRed;
+                }
+            }
+            li:nth-of-type(3) {
+                background-color: #f9a0c3;
+                &:hover {
+                    box-shadow: 0 0 5px #f9a0c3;
+                }
+            }
+        }
+        .line-two {
+            margin-bottom: 1rem;
+            li:nth-of-type(1) {
+                background-color: #40aaf8;
+                &:hover {
+                    box-shadow: 0 0 5px #40aaf8;
+                }
+            }
+            li:nth-of-type(2) {
+                background-color: #3bba7d;
+                margin: {
+                    left: .5rem;
+                    right: .5rem;
+                }
+                &:hover {
+                    box-shadow: 0 0 5px #3bba7d;
+                }
+            }
+            li:nth-of-type(3) {
+                background-color: #d89f55;
+                &:hover {
+                    box-shadow: 0 0 5px #d89f55;
+                }
+            }
+        }
     }
     .music-head{
         background-color: #c62f2f;
@@ -161,6 +305,7 @@
                 left: .6rem;
                 right: .4rem;
             }
+            margin-left:-30rem;
             display: inline-block;
             vertical-align: middle;
             background-color: #a82828;
@@ -258,6 +403,21 @@
             }
 
         }
+        .showIi{
+            i{
+                &:hover{
+                    color:#fff;
+                    cursor: pointer;
+                }
+            }
+            .pifu{
+                .theme-option {
+                    width: 32rem;
+
+                }
+            }
+        }
+
     }
 
 </style>

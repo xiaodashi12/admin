@@ -14,7 +14,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+[class^="v-icon-font"], [class*=" v-icon-font"] {
+  font-family:"iconfont" !important;
+  /* 以下内容参照第三方图标库本身的规则 */
+  font-size: 18px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 .v-icon-fontyouxiang:before {
   content: "\e6b0";
 }

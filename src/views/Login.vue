@@ -49,7 +49,7 @@
         </div>
         <div class="login-footer">
             <div>
-                <i class="v-icon-testwangyiyun"></i>
+                <i class="v-icon-fontwangyiyun"></i>
                 <label>本项目由网易云提供支持</label>
             </div>
         </div>

@@ -1,3 +1,4 @@
+/*
 import router from './router'
 import store from './store'
 import { Message } from 'element-ui'
@@ -33,4 +34,4 @@ router.beforeEach(( to, from, next) => {
     router.afterEach(() => {
         NProgress.done() // 结束Progress
     })
-})
+})*/

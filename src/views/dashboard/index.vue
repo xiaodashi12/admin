@@ -1,11 +1,12 @@
 <template>
     <div class="layout">
-        <head></head>
+        <v-head></v-head>
     </div>
 </template>
 <script>
-    import head from "@/views/head"
+    import vHead from "@/views/head"
     export default {
+        components: {vHead},
         name:"dashBoard",
         data(){
             return{

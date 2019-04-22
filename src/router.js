@@ -12,7 +12,7 @@ export default new Router({
     },
     {
       path: '/',
-      component:() => import('./views/layout'),
+      component:() => import('./views/dashboard'),
       redirect:'/dashboard',
       name:'Dashboard',
       hidden: true,

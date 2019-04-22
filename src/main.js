@@ -5,7 +5,7 @@ import store from './store'
 import '@/styles/icons/iconfont.css'
 import './plugins/element.js'
 import '@/styles/normalize.css'
-import '@/permission'
+//import '@/permission'
 Vue.config.productionTip = false
 
 new Vue({

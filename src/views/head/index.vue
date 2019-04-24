@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="music-head">
+        <div class="music-head" :id="theme">
             <el-row>
                 <el-col :span="4">
                     <div class="grid-content">
@@ -31,11 +31,11 @@
                                     <el-menu class="el-menu-demo" mode="horizontal">
                                         <el-submenu index="2" popper-class="loginInfo" >
                                             <template slot="title">
-                                      <span class="avatar">
-                                          <img class="b1jpg" src="@/assets/b1.jpg" alt="头像" />
-                                          <i class="on bottom b-white"></i>
-                                      </span>
-                                                <span @click="login">登录</span>
+                                              <span class="avatar">
+                                                  <img class="b1jpg" src="@/assets/b1.jpg" alt="头像" />
+                                                  <i class="on bottom b-white"></i>
+                                              </span>
+                                              <span @click="login">登录</span>
                                             </template>
                                             <el-menu-item-group style="with:140px;">
                                                 <el-menu-item index="1-1">
@@ -61,11 +61,11 @@
                             </el-col>
                             <el-col :span="3" class="showIi">
                                 <div class="pifu">
-                                    <i class="v-icon-fontpifu owncloth" v-popover:popover2></i>
+                                    <i class="v-icon-fontpifu owncloth" v-popover:popoverIndex></i>
                                     <el-popover
-                                            ref="popover2"
+                                            ref="popoverIndex"
                                             placement="bottom"
-                                            width="400"
+                                            width="320"
                                             trigger="click" class="theme-option">
                                         <p class="theme-head">
                                             主题
@@ -111,10 +111,12 @@
 </template>
 <script>
     import storage from '@/utils/storage.js'
+    import { mapGetters } from 'vuex';
     export default {
         name:"vhead",
         data(){
             return{
+                popoverIndex:"popover1",
                 placeholder:"搜索音乐，歌手，歌词，用户",
                 searchText:"",
                 isActive: false,
@@ -142,6 +144,49 @@
             },
 
         },
+        watch:{
+            theme(val, oldVal){
+                console.log("b.c: "+val, oldVal);
+                switch(val) {
+                    case 'black':
+                        for (var i = 0; i < 4; i++) {
+                            document.getElementsByClassName("el-menu-item")[i].style.backgroundColor = "#212124"
+                        }
+                        break;
+                    case 'red':
+                        for (var i = 0; i < 4; i++) {
+                            document.getElementsByClassName("el-menu-item")[i].style.backgroundColor = "#c62f2f"
+                        }
+                        break;
+                    case 'pink':
+                        for (var i = 0; i < 4; i++) {
+                            document.getElementsByClassName("el-menu-item")[i].style.backgroundColor = "#f9a0c3"
+                        }
+                        break;
+                    case 'blue':
+                        for (var i = 0; i < 4; i++) {
+                            document.getElementsByClassName("el-menu-item")[i].style.backgroundColor = "#40aaf8"
+                        }
+                        break;
+                    case 'green':
+                        for (var i = 0; i < 4; i++) {
+                            document.getElementsByClassName("el-menu-item")[i].style.backgroundColor = "#3bba7d"
+                        }
+                        break;
+                    case 'gold':
+                        for (var i = 0; i < 4; i++) {
+                            document.getElementsByClassName("el-menu-item")[i].style.backgroundColor = "#d89f55"
+                        }
+                        break;
+                }
+            }
+
+        },
+        computed: {
+            ...mapGetters([
+                'theme',
+            ]),
+        },
         created(){
 
         },
@@ -168,7 +213,7 @@
     }
     .el-menu--horizontal .el-menu .el-menu-item,
     .el-menu--horizontal .el-menu .el-submenu__title{
-        background-color: #c62f2f;
+        background-color: $netRed;
     }
     .el-menu-item-group{
         .el-menu-item-group__title{
@@ -184,6 +229,7 @@
         margin-top:0px;
     }
     .el-popover{
+        padding:0px;
         .theme-head {
             position: relative;
             padding-bottom: 5px;
@@ -202,15 +248,15 @@
             }
         }
         ul {
-            height: 10rem;
+            height: 8rem;
             list-style: none;
             text-align: center;
-            line-height: 10rem;
+            line-height: 8rem;
             li {
                 position: relative;
                 display: inline-block;
-                width: 9rem;
-                height: 9rem;
+                width: 7rem;
+                height: 7rem;
                 vertical-align: middle;
                 cursor: pointer;
                 span {
@@ -230,7 +276,7 @@
             }
         }
         .line-one {
-            margin-top: 1rem;
+            /*margin-top: 1rem;*/
             li:nth-of-type(1) {
                 background-color: #16181c;
                 &:hover {
@@ -255,7 +301,7 @@
             }
         }
         .line-two {
-            margin-bottom: 1rem;
+            /*margin-bottom: 1rem;*/
             li:nth-of-type(1) {
                 background-color: #40aaf8;
                 &:hover {
@@ -281,7 +327,7 @@
         }
     }
     .music-head{
-        background-color: #c62f2f;
+        background-color: $netRed;
         height:5rem;
         position: relative;
         line-height: 5rem;

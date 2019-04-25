@@ -154,28 +154,28 @@
                         }
                         break;
                     case 'red':
-                        for (var i = 0; i < 4; i++) {
-                            document.getElementsByClassName("el-menu-item")[i].style.backgroundColor = "#c62f2f"
+                        for (var j = 0; j < 4; j++) {
+                            document.getElementsByClassName("el-menu-item")[j].style.backgroundColor = "#c62f2f"
                         }
                         break;
                     case 'pink':
-                        for (var i = 0; i < 4; i++) {
-                            document.getElementsByClassName("el-menu-item")[i].style.backgroundColor = "#f9a0c3"
+                        for (var k = 0; k < 4; k++) {
+                            document.getElementsByClassName("el-menu-item")[k].style.backgroundColor = "#f9a0c3"
                         }
                         break;
                     case 'blue':
-                        for (var i = 0; i < 4; i++) {
-                            document.getElementsByClassName("el-menu-item")[i].style.backgroundColor = "#40aaf8"
+                        for (var a = 0; a < 4; a++) {
+                            document.getElementsByClassName("el-menu-item")[a].style.backgroundColor = "#40aaf8"
                         }
                         break;
                     case 'green':
-                        for (var i = 0; i < 4; i++) {
-                            document.getElementsByClassName("el-menu-item")[i].style.backgroundColor = "#3bba7d"
+                        for (var b = 0; b < 4; b++) {
+                            document.getElementsByClassName("el-menu-item")[b].style.backgroundColor = "#3bba7d"
                         }
                         break;
                     case 'gold':
-                        for (var i = 0; i < 4; i++) {
-                            document.getElementsByClassName("el-menu-item")[i].style.backgroundColor = "#d89f55"
+                        for (var c = 0; c < 4; c++) {
+                            document.getElementsByClassName("el-menu-item")[c].style.backgroundColor = "#d89f55"
                         }
                         break;
                 }
@@ -351,7 +351,7 @@
                 left: .6rem;
                 right: .4rem;
             }
-            margin-left:-30rem;
+            margin-left:-25rem;
             display: inline-block;
             vertical-align: middle;
             background-color: #a82828;
@@ -381,18 +381,20 @@
                 background-color: transparent;
                 border-bottom:none;
             }
-            .el-menu--horizontal>.el-submenu .el-submenu__title{
-                height:5rem;
-                line-height:5rem;
-                &:hover{
-                    background-color: transparent;
-                }
-            }
-            .el-menu--horizontal > .el-submenu .el-submenu__title{
-                border-bottom: none;
-            }
             .el-menu--horizontal {
                 border-bottom: none;
+                &> .el-submenu{
+                    float:right;
+                    .el-submenu__title{
+                        border-bottom: none;
+                        height:5rem;
+                        line-height:5rem;
+                        &:hover{
+                            background-color: transparent;
+                        }
+                    }
+                }
+
             }
             .loginInfo{
                 .el-menu-item-group__title{

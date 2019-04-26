@@ -36,14 +36,43 @@
             </ul>
             <div class="sidebar-head">
                 <el-collapse v-model="activeNames" @change="handleChange">
-                    <el-collapse-item title="创建的歌单" name="1">
+                    <el-collapse-item>
+                        <template slot="title">
+                            创建的歌单
+                            <i class="el-icon-circle-plus"></i>
+                        </template>
                         <ul>
                             <li>
                                 <i class="v-icon-fontxin" >我最喜欢的音乐</i>
                             </li>
                         </ul>
                     </el-collapse-item>
+                    <el-collapse-item>
+                        <template slot="title">
+                            收藏的歌单
+                        </template>
+                        <ul>
+                            <li>
+
+                            </li>
+                        </ul>
+                    </el-collapse-item>
                 </el-collapse>
+            </div>
+        </div>
+        <div class="preview" v-if="showMiniAudio">
+            <img :src="imgUrl" class="musicImg">
+            <div class="shadow" @click="$store.commit('setShowPlay', true)">
+                <i class="fa fa-expand"></i>
+            </div>
+            <div class="info">
+                <div>
+                    <span class="song-name"></span>
+                    <i class="v-icon-fontxin" @click=""></i>
+                </div>
+                <div>
+                    <span class="singer"></span><i class="v-icon-fontqunzhuanfamingpian"></i>
+                </div>
             </div>
         </div>
     </div>
@@ -55,13 +84,14 @@
         data(){
             return{
                 isToggleCreateList:false,
-                activeNames:""
-
+                activeNames:"",
+                imgUrl:""
             }
         },
         computed:{
             ...mapGetters([
                 'theme',
+                'showMiniAudio',
             ])
         },
         created(){
@@ -102,17 +132,37 @@
         .sidebar-head {
             position: relative;
             padding-left: 1rem;
-            height: 3.2rem;
-            line-height: 3.2rem;
-            font-size: 1.3rem;
+            height: 2.2rem;
+            line-height: 2.2rem;
+            font-size: 1.0rem;
             text-align: left;
             color: #898989;
             cursor: pointer;
             li {
-                margin-left: 10rem;
+                /*margin-left: 10rem;*/
                 font-size: 1.8rem;
                 &:hover {
                     color: #000;
+                }
+            }
+            .el-collapse{
+                border-top:none;
+                border-bottom:none;
+                .el-collapse-item__header{
+                    background-color: transparent;
+                    border-bottom:none;
+                    position: relative;
+                    .el-icon-circle-plus{
+                        position: absolute;
+                        right: 2rem;
+                    }
+                }
+                .el-collapse-item__content{
+                    padding-bottom:0px;
+                }
+                .el-collapse-item__wrap{
+                    background-color: transparent;
+                    border-bottom:none;
                 }
             }
         }
@@ -125,11 +175,14 @@
                 width: 100%;
                 /*height: 3rem;*/
                 padding-left: 2rem;
-                font-size: 1.3rem;
+                font-size: 1.0rem;
                 line-height: 3rem;
                 color: #5e5e5e;
                 vertical-align: middle;
                 cursor: pointer;
+                [class^="v-icon-font"], [class*=" v-icon-font"]{
+                    font-size:16px;
+                }
                 i{
                     float:left;
                 }
@@ -139,6 +192,72 @@
                 .fa {
                     font-size: 1.8rem;
                     margin-right: 1rem;
+                }
+            }
+        }
+        .preview {
+            position: relative;
+            height: 10%;
+            border-top: 1px solid #e1e1e2;
+            &:hover .shadow {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .musicImg,
+            .shadow {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 6.5rem;
+                cursor: pointer;
+            }
+            .shadow {
+                display: none;
+                text-align: center;
+                font-size: 3rem;
+                color: #ddd;
+                background: rgba(0, 0, 0, .3);
+            }
+            .info {
+                display: flex;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 100%;
+                width: 12rem;
+                flex-direction: column;
+                justify-content: center;
+                color: #474747;
+                > div {
+                    display: flex;
+                    box-sizing: border-box;
+                    width: 12rem;
+                    padding-right: 1rem;
+                    flex-flow: row nowrap;
+                    align-items: center;
+                    justify-content: space-between;
+                    > span {
+                        display: inline-block;
+                        width: 10rem;
+                        overflow-x: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        vertical-align: middle;
+                        cursor: pointer;
+                    }
+                    .singer {
+                        font-size: 1.2rem;
+                    }
+                    .fa {
+                        color: #a8a8a8;
+                        cursor: pointer;
+                    }
+                    .fa-heart {
+                        color: #e83c3c;
+                    }
                 }
             }
         }

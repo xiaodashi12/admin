@@ -39,7 +39,7 @@
                     <el-collapse-item>
                         <template slot="title">
                             创建的歌单
-                            <i class="el-icon-circle-plus"></i>
+                            <i class="el-icon-circle-plus" @click="addMenu"></i>
                         </template>
                         <ul>
                             <li>
@@ -103,6 +103,9 @@
         methods:{
             handleChange(){
 
+            },
+            addMenu(){
+
             }
         }
     }
@@ -110,8 +113,8 @@
 <style lang="scss">
     .sidebar {
         position: absolute;
-        top: 5rem;
-        bottom: 4.6rem;
+        top: 4rem;
+        bottom: 4rem;
         width: 20rem;
         border-right: 1px solid #e1e1e2;
         background-color: #f5f5f7;
@@ -138,6 +141,7 @@
             text-align: left;
             color: #898989;
             cursor: pointer;
+
             li {
                 /*margin-left: 10rem;*/
                 font-size: 1.8rem;
@@ -155,6 +159,9 @@
                     .el-icon-circle-plus{
                         position: absolute;
                         right: 2rem;
+                        &:hover{
+                            color:#fff;
+                        }
                     }
                 }
                 .el-collapse-item__content{

@@ -328,9 +328,9 @@
     }
     .music-head{
         background-color: $netRed;
-        height:5rem;
+        height:4rem;
         position: relative;
-        line-height: 5rem;
+        line-height: 4rem;
         width:100%;
         .yun{
             .yunTubiao{
@@ -387,8 +387,8 @@
                     float:right;
                     .el-submenu__title{
                         border-bottom: none;
-                        height:5rem;
-                        line-height:5rem;
+                        height:4rem;
+                        line-height:4rem;
                         &:hover{
                             background-color: transparent;
                         }
